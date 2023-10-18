@@ -1,16 +1,16 @@
-using system;
+using System;
 using System.Collections.Generic;
 class Juego{
     static void Main(){
         Mapa mapa=new Mapa();
         Jugador j1=new Jugador();
-        IA j2=new Ia(mapa.Menu());
+        IA j2=new IA(mapa.Menu());
         mapa.MapaInicial(j1);
-        j2.setCoordenadasBarcosIA();
+        j2.setCoordenadasBarcosIA(mapa);
         do{
             mapa.MapaAtaque(j1,j2);
-            estrategia(j1);
-        }while(!j1.comprobarGanar() && !j2.comprobarGanar())
+            j2.estrategia(j1);
+        }while(!j1.comprobarGanar() && !j2.comprobarGanar());
         if(j1.getGanar())
         {
             Console.WriteLine("el jugador 1 ha ganado!");

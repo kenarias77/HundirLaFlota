@@ -17,19 +17,18 @@ public class Mapa{
         try{
             Console.WriteLine("Introduzca la dificultad de la IA");
             Console.WriteLine("1-5");
-            dificultad=Convert.toInt32(Console.ReadLine());
+            int dificultad=Int32.Parse(Console.ReadLine());
             if(dificultad<5 && dificultad >0 )
             {
                 return dificultad;
             }
             else{
-                throw new DificultadInvalida("Error al introducir dificultad");
                 return -1;
             }
         }
-        catch(exception e)
+        catch(Exception e)
         {
-            Console.WriteLine(e.message);
+            Console.WriteLine(e.Message);
             return -1;
         }
 
@@ -45,10 +44,10 @@ public class Mapa{
         string coorBarco;
 
         //un string con la lista de todas las posiciones escogidas
-        string listaTotalBarcos;
+        string listaTotalBarcos="";
         do{
             Console.WriteLine("introduce las coordenadas del barco empezando por las fragatas, destructores y por ultimo acorazados");
-            Console.WriteLine("introduce la coordenada más la direccion que quieres que siga con asdw EJEMPLO (B3S -> que será B3,B4,B5 en caso de acorazado)")
+            Console.WriteLine("introduce la coordenada más la direccion que quieres que siga con asdw EJEMPLO (B3S -> que será B3,B4,B5 en caso de acorazado)");
             
             //foreach que primero coge cada barco de la lista de barcos del jugador 1
             foreach(Barco b in j1.getBarcos())
@@ -66,7 +65,7 @@ public class Mapa{
                 for(int j=0;j<10;j++)
                 {
                     //si la posicion a dibujar ya tiene coordenada escogida pone un dibujo en lugar de la coordenada
-                    if(listaTotalBarcos.Contains(""+coordenada[i-1]+j));
+                    if(listaTotalBarcos.Contains(""+coordenada[i-1]+j))
                     {
                          Console.Write(" <-");
                     }
@@ -81,14 +80,14 @@ public class Mapa{
             if(ComprobarCoordenada(coorBarco,nBarco,listaTotalBarcos))
             {
                 j1.setCoordenada(coorBarco,nBarco);
-                nBarco+1;
+                nBarco++;
             }
-            Console.clear();
+            Console.Clear();
         }while(nBarco<10);
     }
 
 //metodo para comprobar que las coordenadas entre barcos no coincidan y que no se salgan del mapa predeterminado
-    private bool ComprobarCoordenada(string coorBarco,int nbarco,string total)
+    public bool ComprobarCoordenada(string coorBarco,int nbarco,string total)
     {
         //booleano que confirma que los barcos no se chocan
         bool seguir=false;
@@ -132,7 +131,7 @@ public class Mapa{
             //actual a izquierda dos casillas
             if(coorBarco[2]=='A')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco-1))+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco-2)+coorBarco[1]){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco-1))+coorBarco[1] && !total.Contains(""+(char)((int)coorBarco-2)+coorBarco[1])){seguir=true;}
             }
             //actual a abajo dos casillas
             else if(coorBarco[2]=='S')
@@ -193,7 +192,7 @@ public class Mapa{
         {
             for(int j=0;j<10;j++)
             {
-                if(listaFallo.Contains(""+coordenada[i-1]+j));
+                if(listaFallo.Contains(""+coordenada[i-1]+j))
                 {
                     Console.Write(" O");
                 }

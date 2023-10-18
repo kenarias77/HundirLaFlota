@@ -1,0 +1,4 @@
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.AssemblyInfoInputs.cache
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.AssemblyInfo.cs
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.csproj.CoreCompileInputs.cache

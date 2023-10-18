@@ -1,4 +1,4 @@
-using system;
+using System;
 using System.Collections.Generic;
 
 //clase de los barcos, donde se le asigna la vida y nombre
@@ -7,10 +7,10 @@ public class Barco{
     private string nombre;
 
     //lista de la posicion que ocupa el barco
-    private List<string> posicionBarco=new List<string>;
+    private List<string> posicionBarco=new List<string>();
 
     //constructor de barcos
-    public void barcos(int vida,string nombre)
+    public Barco(int vida,string nombre)
     {
         this.vida=vida;
         this.nombre=nombre;
@@ -49,42 +49,42 @@ public class Barco{
         {
             //seleccionamos la primera letra de la coordenada y la convertimos a ascii restandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia la izquierda
-            case A:
+            case 'A':
             ascii=(int)coordenadaBarco[0];
                 for(int i=0;i<vida;i++)
                 {
-                    posicionBarco.add(ascii.toString()+coordenadaBarco[1]);
-                    ascii-1;
+                    posicionBarco.Add(""+(char)+coordenadaBarco[1]);
+                    ascii--;
                 }
             break;
             //seleccionamos la segunda letra de la coordenada y la convertimos a ascii sumandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia abajo
-            case S:
+            case 'S':
             ascii=(int)coordenadaBarco[1];
                 for(int i=0;i<vida;i++)
                 {
-                    posicionBarco.add(coordenadaBarco[0]+ascii.toString());
-                    ascii+1;
+                    posicionBarco.Add(""+coordenadaBarco[0]+(char)ascii);
+                    ascii++;
                 }
             break;
             //seleccionamos la primera letra de la coordenada y la convertimos a ascii sumandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia la derecha
-            case D:
+            case 'D':
             ascii=(int)coordenadaBarco[0];
                 for(int i=0;i<vida;i++)
                 {
-                    posicionBarco.add(ascii.toString()+coordenadaBarco[1]);
-                    ascii+1;
+                    posicionBarco.Add(""+(char)ascii+coordenadaBarco[1]);
+                    ascii++;
                 }
             break;
             //seleccionamos la segunda letra de la coordenada y la convertimos a ascii restandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia arriba
-            case W:
+            case 'W':
             ascii=(int)coordenadaBarco[1];
                 for(int i=0;i<vida;i++)
                 {
-                    posicionBarco.add(coordenadaBarco[0]+ascii.toString());
-                    ascii-1;
+                    posicionBarco.Add(""+coordenadaBarco[0]+(char)ascii);
+                    ascii--;
                 }
             break;
         }
