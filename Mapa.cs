@@ -48,7 +48,7 @@ public class Mapa{
         do{
             Console.WriteLine("introduce las coordenadas del barco empezando por las fragatas, destructores y por ultimo acorazados");
             Console.WriteLine("introduce la coordenada más la direccion que quieres que siga con asdw EJEMPLO (B3S -> que será B3,B4,B5 en caso de acorazado)");
-            
+            Console.WriteLine(nBarco);
             //foreach que primero coge cada barco de la lista de barcos del jugador 1
             foreach(Barco b in j1.getBarcos())
             {
@@ -58,7 +58,7 @@ public class Mapa{
                     listaTotalBarcos+=p;
                 }
             }
-
+            
             //for que cada vez que introduzcamos una coordenada de barco se actualiza
             for(int i=1;i<11;i++)
             {
@@ -102,7 +102,7 @@ public class Mapa{
             //esta es para indicar que la coordenada es la que le pasamos más la coordenada a la izquierda
             if(coorBarco[2]=='A')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco-1)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]-1)+coorBarco[1])){seguir=true;}
             }
 
             //lo mismo pero hacia abajo
@@ -114,7 +114,7 @@ public class Mapa{
             //lo mismo pero hacia la derecha
             else if(coorBarco[2]=='D')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco+1)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]+1)+coorBarco[1])){seguir=true;}
             }
 
             //lo mismo pero hacia arriba
@@ -131,7 +131,7 @@ public class Mapa{
             //actual a izquierda dos casillas
             if(coorBarco[2]=='A')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco-1))+coorBarco[1] && !total.Contains(""+(char)((int)coorBarco-2)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]-1)+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco[0]-2)+coorBarco[1])){seguir=true;}
             }
             //actual a abajo dos casillas
             else if(coorBarco[2]=='S')
@@ -141,7 +141,7 @@ public class Mapa{
             //actual a derecha dos casillas
             else if(coorBarco[2]=='D')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco+1)+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco+2)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]+1)+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco[0]+2)+coorBarco[1])){seguir=true;}
             }
             //actual a arriba dos casillas
             else if(coorBarco[2]=='W')
@@ -151,7 +151,7 @@ public class Mapa{
         }
 
         //en este if controlamos a que las fragatas no esten en una coordenada ya definida y que las demas coordenadas no se repitan
-        if(!listaTotalBarcos.Contains(coorBarco.Remove(2)) && seguir)
+        if(!total.Contains(coorBarco.Remove(2)) && seguir)
         {
 
             //aqui controlamos que la letra de la coordenada es correcta
@@ -192,11 +192,11 @@ public class Mapa{
         {
             for(int j=0;j<10;j++)
             {
-                if(listaFallo.Contains(""+coordenada[i-1]+j))
+                if(j1.getAtaque().Contains("N"))
                 {
                     Console.Write(" O");
                 }
-                else if(ListaAcierto.Contains(""+coordenada[i-1]+j))
+                else if(j1.getAtaque().Contains("Y"))
                 {
                     Console.Write(" <-");
                 }
@@ -213,9 +213,15 @@ public class Mapa{
             {
                 Console.WriteLine("No puedes atacar al mismo sitio!");
             }
+            else if(j2.Atacado(ataque))
+            {
+                j1.setAtaque(ataque+"Y");
+                salir=true;
+            }
             else{
                 salir=true;
-                j2.Atacado(ataque,j1);
+                j1.setAtaque(ataque+"N");
+                Console.WriteLine("fallo!");
             }
         }
     }

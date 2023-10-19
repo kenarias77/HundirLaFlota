@@ -2,3 +2,13 @@ C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.Gener
 C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.AssemblyInfoInputs.cache
 C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.AssemblyInfo.cs
 C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.csproj.CoreCompileInputs.cache
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\bin\Debug\net7.0\HundirLaFlota.exe
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\bin\Debug\net7.0\HundirLaFlota.deps.json
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\bin\Debug\net7.0\HundirLaFlota.runtimeconfig.json
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\bin\Debug\net7.0\HundirLaFlota.dll
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\bin\Debug\net7.0\HundirLaFlota.pdb
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.dll
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\refint\HundirLaFlota.dll
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.pdb
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\HundirLaFlota.genruntimeconfig.cache
+C:\Users\KEN\Documents\GitHub\HundirLaFlota\obj\Debug\net7.0\ref\HundirLaFlota.dll
