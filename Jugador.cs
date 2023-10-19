@@ -10,7 +10,7 @@ public class Jugador{
     protected List<string> coordenadaAtaques=new List<string>();
 
     //booleano que indica si el jugador gana la partida
-    protected bool ganar=false;
+    protected bool ganar=true;
 
     //constructor de jugador
     public Jugador()
@@ -77,10 +77,10 @@ public class Jugador{
         {
             if(b.getVida() > 0)
             {
-                return false;
+                return true;
             }
         }
-        ganar=true;
+        ganar=false;
         return ganar;
     }
 

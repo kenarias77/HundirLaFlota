@@ -4,9 +4,6 @@ using System.Collections.Generic;
 //clase donde se dibujara el mapa y el menu del juego
 public class Mapa{
 
-    //dificultad que le asignaremos a la IA
-    private int Dificultad;
-
     //string para dibujar las coordenadas del mapa
     private string coordenada="ABCDEFGHIJ";
 
@@ -52,13 +49,15 @@ public class Mapa{
             //foreach que primero coge cada barco de la lista de barcos del jugador 1
             foreach(Barco b in j1.getBarcos())
             {
+                Console.Write(b.getNombre()+" ");
                 //segundo foreach que coge la posicion de la lista del barco y la pone en la variable con las coordenadas
                 foreach(string p in b.getPosicion())
                 {
+                    Console.Write(p+" ");
                     listaTotalBarcos+=p;
                 }
+                Console.WriteLine("");
             }
-            
             //for que cada vez que introduzcamos una coordenada de barco se actualiza
             for(int i=1;i<11;i++)
             {
@@ -82,7 +81,7 @@ public class Mapa{
                 j1.setCoordenada(coorBarco,nBarco);
                 nBarco++;
             }
-            Console.Clear();
+            listaTotalBarcos="";
         }while(nBarco<10);
     }
 
@@ -100,27 +99,27 @@ public class Mapa{
             //mas la siguiente 'seguir' pasara a ser 'true'
 
             //esta es para indicar que la coordenada es la que le pasamos más la coordenada a la izquierda
-            if(coorBarco[2]=='A')
+            if(coorBarco[2]=='A' && coorBarco[1]!='0')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]-1)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]-1))){seguir=true;}
             }
 
             //lo mismo pero hacia abajo
-            else if(coorBarco[2]=='S')
+            else if(coorBarco[2]=='S' && coorBarco[0]!='J')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(coorBarco[1]+1))){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)(coorBarco[0]+1)+coorBarco[1])){seguir=true;}
             }
 
             //lo mismo pero hacia la derecha
-            else if(coorBarco[2]=='D')
+            else if(coorBarco[2]=='D' && coorBarco[1]!='9')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]+1)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]+1))){seguir=true;}
             }
 
             //lo mismo pero hacia arriba
-            else if(coorBarco[2]=='W')
+            else if(coorBarco[2]=='W' && coorBarco[0]!='A')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco+(coorBarco[1]-1))){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)(coorBarco[0]-1)+coorBarco[1])){seguir=true;}
             }
         }
 
@@ -129,29 +128,29 @@ public class Mapa{
         {
 
             //actual a izquierda dos casillas
-            if(coorBarco[2]=='A')
+            if(coorBarco[2]=='A' && coorBarco[1]!='1' && coorBarco[1]!='0')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]-1)+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco[0]-2)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)(coorBarco[0]-1)+coorBarco[1]) && !total.Contains(""+(char)(coorBarco[0]-2)+coorBarco[1])){seguir=true;}
             }
             //actual a abajo dos casillas
-            else if(coorBarco[2]=='S')
+            else if(coorBarco[2]=='S' && coorBarco[0]!='I' && coorBarco[0]!='J')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(coorBarco[1]+1)) && !total.Contains(""+coorBarco[0]+(coorBarco[1]+2))){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]+1)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]+2))){seguir=true;}
             }
             //actual a derecha dos casillas
-            else if(coorBarco[2]=='D')
+            else if(coorBarco[2]=='D' && coorBarco[1]!='8' && coorBarco[1]!='9')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)((int)coorBarco[0]+1)+coorBarco[1]) && !total.Contains(""+(char)((int)coorBarco[0]+2)+coorBarco[1])){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+(char)(coorBarco[0]+1)+coorBarco[1]) && !total.Contains(""+(char)(coorBarco[0]+2)+coorBarco[1])){seguir=true;}
             }
             //actual a arriba dos casillas
-            else if(coorBarco[2]=='W')
+            else if(coorBarco[2]=='W' && coorBarco[0]!='B' && coorBarco[0]!='A')
             {
-                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco+(coorBarco[1]-1)) && !total.Contains(""+coorBarco+(coorBarco[1]-2))){seguir=true;}
+                if(!total.Contains(coorBarco.Remove(2)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]-1)) && !total.Contains(""+coorBarco[0]+(char)(coorBarco[1]-2))){seguir=true;}
             }
         }
 
         //en este if controlamos a que las fragatas no esten en una coordenada ya definida y que las demas coordenadas no se repitan
-        if(!total.Contains(coorBarco.Remove(2)) && seguir)
+        if(!total.Contains(coorBarco.Remove(2)) && seguir || !total.Contains(coorBarco.Remove(2)) && nbarco<4)
         {
 
             //aqui controlamos que la letra de la coordenada es correcta
@@ -188,20 +187,20 @@ public class Mapa{
     {
         bool salir=false;
         Console.WriteLine("Indica la coordenada a atacar!");
-        for(int i=1;i<11;i++)
+        for(int i=0;i<10;i++)
         {
             for(int j=0;j<10;j++)
             {
-                if(j1.getAtaque().Contains("N"))
+                if(j1.getAtaque().Contains(coordenada[i]+""+j+"N"))
                 {
-                    Console.Write(" O");
+                    Console.Write(" O0");
                 }
-                else if(j1.getAtaque().Contains("Y"))
+                else if(j1.getAtaque().Contains(coordenada[i]+""+j+"Y"))
                 {
                     Console.Write(" <-");
                 }
                 else{
-                    Console.Write(" "+coordenada[i-1]+j);
+                    Console.Write(" "+coordenada[i]+j);
                 }
             }
             Console.WriteLine();
@@ -209,7 +208,7 @@ public class Mapa{
         while(!salir)
         {
             string ataque=Console.ReadLine().ToUpper();
-            if(j1.getAtaque().Contains(ataque))
+            if(j1.getAtaque().Contains(ataque+"N")||j1.getAtaque().Contains(ataque+"Y"))
             {
                 Console.WriteLine("No puedes atacar al mismo sitio!");
             }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 //clase hija de jugador donde se le asigna la dificultad a la IA
 public class IA : Jugador
 {
-    private int dificultad;
+    public int dificultad;
     private int x;
     private int y;
     private string[] z={"A","S","D","W"};
@@ -19,31 +19,27 @@ public class IA : Jugador
     //switch donde selecciona una estrategia basado en la dificultad seleccionada
     public void estrategia(Jugador j1)
     {
-        switch(dificultad)
+        if(dificultad==1)
         {
-
             //dificultad 1 todo aleatorio
-            case 1:
                 x=rnd.Next(65,75);
-                y=rnd.Next(0,9);
+                y=rnd.Next(48,58);
                 AtaqueIA(j1,x,y);
-            break;
-
+        }
+        else{
             //demás dificultades: segun el numero de la dificultad atacara de 1 a 4 veces las posiciones adyacentes a la ultima acertada
             //disponible
-            case 2: case 3: case 4: case 5:
-                if(coordenadaAtaques.Count>0 && getAtaqueIA())
-                {
-                    x=(int)coordenadaAtaques[coordenadaAtaques.Count-1][0];
-                    y=(int)coordenadaAtaques[coordenadaAtaques.Count-1][1];
-                    AtaqueIA(j1,x,y,dificultad);
-                }
-                else{
-                    x=rnd.Next(65,75);
-                    y=rnd.Next(0,9);
-                    AtaqueIA(j1,x,y);
-                }
-            break;
+            if(coordenadaAtaques.Count>0 && getAtaqueIA())
+            {
+                x=(int)coordenadaAtaques[coordenadaAtaques.Count-1][0];
+                y=(int)coordenadaAtaques[coordenadaAtaques.Count-1][1];
+                AtaqueIA(j1,x,y,dificultad);
+            }
+            else{
+                x=rnd.Next(65,75);
+                y=rnd.Next(48,58);
+                AtaqueIA(j1,x,y);
+            }
         }
     }
 
@@ -62,19 +58,21 @@ public class IA : Jugador
         do{
             foreach(Barco b in getBarcos())
             {
+                Console.Write(b.getNombre()+" ");
                 //segundo foreach que coge la posicion de la lista del barco y la pone en la variable con las coordenadas
                 foreach(string p in b.getPosicion())
                 {
-                    listaTotalBarcos =string.Concat(listaTotalBarcos,p);
+                    Console.Write(p+" ");
+                    listaTotalBarcos+=p;
                 }
+                Console.WriteLine(" barco:"+nBarcos);
             }
             //variable donde guardaremos cada columna;
             x=rnd.Next(65,75);
             //variable donde guardaremos cada fila
             y=rnd.Next(48,58);
-
             //variable completa donde le asignaremos la x(A-J) la y(0-9) y la direccion (A,S,D,W)
-            coordBarco=""+(char)x+(char)y+z[rnd.Next(1,5)];
+            coordBarco=""+(char)x+(char)y+z[rnd.Next(0,4)];
             //if donde comprobaremos que el valor creado aleatoriamente es correcto
             if(m.ComprobarCoordenada(coordBarco,nBarcos,listaTotalBarcos))
             {
@@ -90,10 +88,11 @@ public class IA : Jugador
         //comprueba que el ataque elegido al azar no se repita y en caso que lo haga que escoja otra coordenada al azar
         if(dificultad==1)
         {
-            ataque=(""+(char)x+(char)y);
+            ataque=""+(char)x+(char)y;
             while(!salir)
             {
-                if(!getAtaque().Contains(ataque))
+                Console.WriteLine(ataque);
+                if(!getAtaque().Contains(ataque+"N") || !getAtaque().Contains(ataque+"Y"))
                 {  
                     salir=true;
                     if(j1.Atacado(ataque))
@@ -107,8 +106,8 @@ public class IA : Jugador
                 else
                 {
                     x=rnd.Next(65,75);
-                    y=rnd.Next(0,9);
-                    ataque=(""+(char)x+(char)y);
+                    y=rnd.Next(48,58);
+                    ataque=""+(char)x+(char)y;
                 }
             }   
         }

@@ -10,7 +10,7 @@ class Juego{
         do{
             mapa.MapaAtaque(j1,j2);
             j2.estrategia(j1);
-        }while(!j1.comprobarGanar() && !j2.comprobarGanar());
+        }while(j1.comprobarGanar() && j2.comprobarGanar());
         if(j1.getGanar())
         {
             Console.WriteLine("el jugador 1 ha ganado!");

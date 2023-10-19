@@ -50,26 +50,16 @@ public class Barco{
             //seleccionamos la primera letra de la coordenada y la convertimos a ascii restandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia la izquierda
             case 'A':
-            ascii=(int)coordenadaBarco[0];
+            ascii=(int)coordenadaBarco[1];
                 for(int i=0;i<vida;i++)
                 {
-                    posicionBarco.Add(""+(char)+coordenadaBarco[1]);
+                    posicionBarco.Add(""+coordenadaBarco[0]+(char)ascii);
                     ascii--;
                 }
             break;
             //seleccionamos la segunda letra de la coordenada y la convertimos a ascii sumandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia abajo
             case 'S':
-            ascii=(int)coordenadaBarco[1];
-                for(int i=0;i<vida;i++)
-                {
-                    posicionBarco.Add(""+coordenadaBarco[0]+(char)ascii);
-                    ascii++;
-                }
-            break;
-            //seleccionamos la primera letra de la coordenada y la convertimos a ascii sumandole 1 por cada vida
-            //que tenga el barco ya que la coordenada va hacia la derecha
-            case 'D':
             ascii=(int)coordenadaBarco[0];
                 for(int i=0;i<vida;i++)
                 {
@@ -77,14 +67,24 @@ public class Barco{
                     ascii++;
                 }
             break;
+            //seleccionamos la primera letra de la coordenada y la convertimos a ascii sumandole 1 por cada vida
+            //que tenga el barco ya que la coordenada va hacia la derecha
+            case 'W':
+            ascii=(int)coordenadaBarco[0];
+                for(int i=0;i<vida;i++)
+                {
+                    posicionBarco.Add(""+(char)ascii+coordenadaBarco[1]);
+                    ascii--;
+                }
+            break;
             //seleccionamos la segunda letra de la coordenada y la convertimos a ascii restandole 1 por cada vida
             //que tenga el barco ya que la coordenada va hacia arriba
-            case 'W':
+            case 'D':
             ascii=(int)coordenadaBarco[1];
                 for(int i=0;i<vida;i++)
                 {
                     posicionBarco.Add(""+coordenadaBarco[0]+(char)ascii);
-                    ascii--;
+                    ascii++;
                 }
             break;
         }
